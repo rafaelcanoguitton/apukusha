@@ -3,8 +3,10 @@ import Swal from "sweetalert2";
 import Link from "next/link";
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import Map from "./components/map";
 import { Icon } from "@iconify/react";
+// @ts-ignore
+import GoogleMapReact from "google-map-react";
+import locationIcon from "@iconify/icons-mdi/map-marker";
 const location = {
   address: "Tu última ubicación",
   //a random latitude ranging from -16.458136 to -16.396518
@@ -12,7 +14,42 @@ const location = {
   // a random longitude ranging from -71.599834 to -71.438470
   lng: Math.random() * (-71.599834 - -71.43847) + -71.43847,
 };
-
+// @ts-ignore
+const LocationPin = ({ text }) => (
+  <div className="pin">
+    <Icon icon={locationIcon} className="pin-icon" />
+    <p className="pin-text">{text}</p>
+  </div>
+);
+// @ts-ignore
+const Map = ({ location, zoomLevel }) => (
+  <div className="map">
+    {/* <h2 className="map-h2">Tu última ubicación</h2> */}
+    <div className="google-map">
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "AIzaSyBpxJAeQbi58J-twZKUh-vDmFWwqfxn-hk" }}
+        defaultCenter={location}
+        defaultZoom={zoomLevel}
+        options={{
+          gestureHandling: "true",
+          mapTypeControl: false,
+          streetViewControl: false,
+          fullscreenControl: false,
+          zoomControl: false,
+          scrollwheel: false,
+        }}
+      >
+        <LocationPin
+          // @ts-ignore
+          // eslinst-disable-next-line
+          lat={location.lat}
+          lng={location.lng}
+          text={location.address}
+        />
+      </GoogleMapReact>
+    </div>
+  </div>
+);
 const Dashboard: NextPage = () => {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);

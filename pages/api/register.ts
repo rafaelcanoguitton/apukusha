@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../lib/dbConnect";
+// @ts-ignore
 import User from "../../models/User";
 
 // type Data = {

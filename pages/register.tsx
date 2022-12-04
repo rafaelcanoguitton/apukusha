@@ -45,7 +45,7 @@ const Register: NextPage = () => {
       }
       setErrors(errorsToDisplay);
     } else {
-      try{
+      try {
         const result = await axios.post("/api/register", {
           name: name,
           email: email,
@@ -59,12 +59,17 @@ const Register: NextPage = () => {
         });
         console.log(result.data);
         router.push("/login");
-      }catch(err){
+      } catch (err) {
+        // @ts-ignore
         console.log(err.response.data);
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: err.response.data.error==="User already exists"?"El usuario ya existe":"Ha ocurrido un error",
+          text:
+          // @ts-ignore
+            err.response.data.error === "User already exists"
+              ? "El usuario ya existe"
+              : "Ha ocurrido un error",
         });
       }
     }
@@ -146,10 +151,13 @@ const Register: NextPage = () => {
             />
           </div>
           {errors.length > 0 && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <div
+              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+              role="alert"
+            >
               <ul>
                 {errors.map((error) => (
-                  <li>{error}</li>
+                  <li key={error}>{error}</li>
                 ))}
               </ul>
             </div>
