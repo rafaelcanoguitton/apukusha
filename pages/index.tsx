@@ -34,11 +34,9 @@ const NavBar: React.FC = () => {
         ) : (
           <div className="flex items-center">
             <Link href="/login">
-            <button
-              className="bg-rojito text-white font-bold py-2 px-4 rounded"
-            >
-              Iniciar sesión
-            </button>
+              <button className="bg-rojito text-white font-bold py-2 px-4 rounded">
+                Iniciar sesión
+              </button>
             </Link>
           </div>
         )}
@@ -67,7 +65,7 @@ export default function Home() {
           <p className="mt-3 text-2xl font-bold text-rojito">
             Tu felicidad es un reflejo de tu salud
           </p>
-          <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
+          <div className="flex flex-wrap flex-col items-center justify-around max-w-4xl mt-6 sm:w-full">
             <Link
               href="/dashboard"
               className="p-6 mt-6 border w-96 rounded-xl hover:text-rojito focus:text-rojito hover:border-rojito focus:border-rojito text-center"
@@ -76,6 +74,12 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-white">
                 Pruebanos ahora &rarr;
               </h3>
+            </Link>
+            <Link
+              href="/about"
+              className="p-6 mt-6 border w-96 rounded-xl hover:text-rojito focus:text-rojito hover:border-rojito focus:border-rojito text-center bg-rojito"
+            >
+              <h3 className="text-2xl font-bold text-white">Acerca de</h3>
             </Link>
           </div>
         </main>

@@ -39,6 +39,14 @@ a {
 .fondito {
   background-image: url("/fondo.jpeg");
 }
+.bg-logo{
+  background-image: url("/logo.png");
+}
+.bg-capybara{
+  background-image: url("/capybara_opac.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 #__next {
   height: 100%;
 }
